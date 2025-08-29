@@ -1,6 +1,9 @@
 // Importar pacotes/bibliotecas
 import express from "express";
 import dotenv from "dotenv";
+import dados from "./src/data/dados.js";
+
+const { bruxos, casas, varinhas, animais, pocoes } = dados;
 
 // Criar aplicação com Express e configurar para aceitar JSON
 const app = express();
