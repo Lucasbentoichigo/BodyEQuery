@@ -181,12 +181,12 @@ app.get('/animais', (req, res) => {
     let resultado = animais;
   
     if (nome) {
-      resultado = resultado.filter(p => p.nome.toLowerCase().includes(nome.toLowerCase()));
+      resultado = resultado.filter(a => a.nome.toLowerCase().includes(nome.toLowerCase()));
     }
   
   
     if (tipo) {
-      resultado = resultado.filter(p => p.efeito.toLowerCase().includes(efeito.toLowerCase()));
+      resultado = resultado.filter(a => a.tipo.toLowerCase().includes(tipo.toLowerCase()));
     }
 
     res.status(200).json({
