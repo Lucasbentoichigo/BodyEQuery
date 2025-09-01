@@ -47,6 +47,37 @@ app.get('/bruxos', (req, res) => {
     });
 });
 
+app.post("/bruxos", (req, res) => {
+  const { nome, casa, ano, varinha, mascote, patrono, especialidade, vivo } = req.body;
+
+  if (nome === false || !casa) {
+    return res.status(400).json({
+      sucess: false,
+      message: "Nome e casa são obrigatórios para um bruxo!",
+    });
+  }
+  
+  const novoBruxo ={
+    id: bruxos.length + 1 ,
+    nome,
+    casa: casa,
+    ano: parseInt(ano),
+    varinha: varinha,
+    mascote,
+    patrono,
+    especialidade: especialidade || "Ainda não atribuido!",
+    vivo: vivo
+  }
+
+  bruxos.push(novoBruxo);
+
+  res.status(201).json({
+    sucess: true,
+    messages: "Novo bruxo adicionado a Hogwarts!",
+    data: novoBruxo,
+  });
+})
+
 // Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${serverPort} 🚀`);
